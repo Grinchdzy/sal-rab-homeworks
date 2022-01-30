@@ -2,12 +2,16 @@ function calcShipping(sum, min, shipping) {
     let productsSum = sum; // сумма в корзине
     let freeShippingMinSum = min; // минимальная цена для бесплатной доставки
     let shippingPrice = shipping; // стоимость доставки
+   
+   
+   
     let shippingSum;
     if (productsSum == 0 || productsSum >= freeShippingMinSum) {
         shippingSum = 0;
     }   else if(productsSum > 0 && productsSum < freeShippingMinSum ) {
         shippingSum = shippingPrice;
-    }
+    } 
+
 
 
     // Задание №2.1. Рассчитать доставку
@@ -31,11 +35,13 @@ function calcShipping(sum, min, shipping) {
 function calcDiscount(sum, min, discount) {
     let productsSum = sum; // сумма в корзине
     let discountMinSum = min; // минимальная цена для скидки
-    let discountPart = discount; // величина скидки в процентах
+    let discountPart = discount; // величина скидки в процентах  
+  
     let discountSum;
     if (productsSum >= discountMinSum) {
-        discountSum = discountPart
-    }   else  discountSum = 0
+        discountSum = discountPart / 100 * productsSum;
+    }   else  {discountSum = 0;
+    }
     // Задание №2.2. Рассчитать скидку
 
     // создайте переменную discountSum
@@ -45,13 +51,17 @@ function calcDiscount(sum, min, discount) {
     // иначе присвойте discountSum значение 0
 
     // Конец решения задания №2.2.
-
+    console.log(discountSum);
     return discountSum;
 }
 
 function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shippingPrice}) {
     let productsSum = sum;
     let discountSum = calcDiscount(sum, discountMinSum, discountPart);
+
+    let totalSum;
+    let totalSum = productsSum;
+    let totalSum = totalSum - discountSum;
 
     // Задача №2.3. Рассчитать скидки и доставку в корзине
 
@@ -62,6 +72,8 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
 
     let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
 
+    let totalSum = totalSum + shippingSum;
+     let freeShipping = shippingSum==0;
     // прибавьте к totalSum значение shippingSum
 
     // создайте переменную freeShipping
