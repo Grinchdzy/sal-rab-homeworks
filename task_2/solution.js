@@ -5,7 +5,7 @@ function calcShipping(sum, min, shipping) {
     let shippingSum;
     if (productsSum == 0 || productsSum >= freeShippingMinSum) {
         shippingSum = 0;
-    }   else (productsSum > 0 && productsSum < freeShippingMinSum ) {
+    }   else if(productsSum > 0 && productsSum < freeShippingMinSum ) {
         shippingSum = shippingPrice;
     }
 
@@ -25,7 +25,7 @@ function calcShipping(sum, min, shipping) {
 
     // Конец решения задания №2.1.
 
-    return shippingSum;
+    return shippingPrice;
 }
 
 function calcDiscount(sum, min, discount) {
